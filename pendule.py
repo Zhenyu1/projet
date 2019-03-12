@@ -13,6 +13,8 @@ def regularLinEqSolve(A,b, epsilon):
     Aplus = np.dot(np.dot(vv, 1./(ss+epsilon)), uu.t)
     return np.dot(Aplus, b)
 
+#test modif
+
 class pendule:
     def __init__(self, m, l, g, nu):
         self.m = m
