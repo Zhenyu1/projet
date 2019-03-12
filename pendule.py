@@ -16,11 +16,11 @@ def regularLinEqSolve(A,b, epsilon):
 #test modif
 
 class pendule:
-    def __init__(self, m, l, g, nu):
+    def __init__(self, m, l, g, mu):
         self.m = m
         self.l = l
         self.g = g
-        self.nu = nu
+        self.mu = mu
 
         self.nq = 1
         self.nu = 1
@@ -48,7 +48,7 @@ class pendule:
         q=self.q if Q is None else Q[:self.nq, [0]]
         qd=self.qd if Q is None else Q[self.nq:, [0]]
         u = np.zeros((self.nu,1)) if u is None else u
-        return np.array([[(u[0,0]+self.m*self.l*sin(q[0,0])-self.nu*qd[0,0])/(self.m*self.l**2)]])
+        return np.array([[(u[0,0]+self.m*self.l*self.g*sin(q[0,0])-self.nu*qd[0,0])/(self.m*self.l**2)]])
 
     def getQd(self, Q=None, u=None, useSelfQd=False):
         """Get state-space velocity (derivative of the position of the system in the state-space)"""
